@@ -17,6 +17,7 @@ mode        : selfcontained # {standalone, draft}
 
 
 
+
 <img class=center src=fig/galton.jpg height=150>
 
 ### (Perhaps surprisingly, this example is still relevant)
@@ -67,6 +68,7 @@ hist(galton$parent,col="blue",breaks=100)
 
 <div class="rimage center"><img src="fig/galton.png" title="plot of chunk galton" alt="plot of chunk galton" class="plot" /></div>
 
+
 ---
 ## Finding the middle via least squares
 * Consider only the children's heights. 
@@ -104,6 +106,7 @@ manipulate(myHist(mu), mu = slider(62, 74, step = 0.5))
 
 <div class="rimage center"><img src="fig/lsm.png" title="plot of chunk lsm" alt="plot of chunk lsm" class="plot" /></div>
 
+
 ---
 ### The math follows as:
 $$ 
@@ -134,10 +137,12 @@ plot(galton$parent,galton$child,pch=19,col="blue")
 
 <div class="rimage center"><img src="fig/unnamed-chunk-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
 
+
 ---
 Size of point represents number of points at that (X, Y) combination (See the Rmd file for the code).
 
 <div class="rimage center"><img src="fig/freqGalton.png" title="plot of chunk freqGalton" alt="plot of chunk freqGalton" class="plot" /></div>
+
 
 ---
 ## Regression through the origin
@@ -192,8 +197,10 @@ I(parent - mean(parent))
                    0.646  
 ```
 
+
 ---
 ## Visualizing the best fit line
 ### Size of points are frequencies at that X, Y combination
 <div class="rimage center"><img src="fig/unnamed-chunk-3.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" class="plot" /></div>
+
 
