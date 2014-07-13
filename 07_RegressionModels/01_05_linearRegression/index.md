@@ -15,7 +15,6 @@ mode        : selfcontained # {standalone, draft}
 
 ---
 
-
 ## Basic regression model with additive Gaussian errors.
 * Least squares is an estimation tool, how do we do inference?
 * Consider developing a probabilistic model for linear regression
@@ -125,88 +124,15 @@ abline(lm(price ~ carat, data = diamond), lwd = 2)
 
 ---
 ## The plot
-<div class="rimage center"><img src="fig/unnamed-chunk-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" class="plot" /></div>
 
 
----
-## Fitting the linear regression model
-
-```r
-fit <- lm(price ~ carat, data = diamond)
-coef(fit)
-```
-
-```
-(Intercept)       carat 
-     -259.6      3721.0 
-```
 
 
-* We estimate an expected 3721.02 (SIN) dollar increase in price for every carat increase in mass of diamond.
-* The intercept -259.63 is the expected price
-  of a 0 carat diamond.
-
----
-## Getting a more interpretable intercept
-
-```r
-fit2 <- lm(price ~ I(carat - mean(carat)), data = diamond)
-coef(fit2)
-```
-
-```
-           (Intercept) I(carat - mean(carat)) 
-                 500.1                 3721.0 
-```
 
 
-Thus $500.1 is the expected price for 
-the average sized diamond of the data (0.2042 carats).
-
----
-## Changing scale
-* A one carat increase in a diamond is pretty big, what about
-  changing units to 1/10th of a carat? 
-* We can just do this by just dividing the coeficient by 10.
-  * We expect  a 372.102 (SIN) dollar   change in price for every 1/10th of a carat increase in mass of diamond.
-* Showing that it's the same if we rescale the Xs and refit
-
-```r
-fit3 <- lm(price ~ I(carat * 10), data = diamond)
-coef(fit3)
-```
-
-```
-  (Intercept) I(carat * 10) 
-       -259.6         372.1 
-```
 
 
----
-## Predicting the price of a diamond
-
-```r
-newx <- c(0.16, 0.27, 0.34)
-coef(fit)[1] + coef(fit)[2] * newx
-```
-
-```
-[1]  335.7  745.1 1005.5
-```
-
-```r
-predict(fit, newdata = data.frame(carat = newx))
-```
-
-```
-     1      2      3 
- 335.7  745.1 1005.5 
-```
 
 
----
-Predicted values at the observed Xs (red)
-and at the new Xs (lines)
-<div class="rimage center"><img src="fig/unnamed-chunk-6.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" class="plot" /></div>
 
 
